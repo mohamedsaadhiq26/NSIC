@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F4F4F0;
+    color: #000000;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Neo-Brutalist Hazard Stripes Backgrounds */
+.hazard-stripes {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FFE600,
+    #FFE600 10px,
+    #000000 10px,
+    #000000 20px
+  );
+}
+
+.hazard-stripes-orange {
+  background: repeating-linear-gradient(
+    -45deg,
+    #FF5C00,
+    #FF5C00 10px,
+    #000000 10px,
+    #000000 20px
+  );
+}
+
+/* Hard Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F4F0;
+  border-left: 2px solid #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border: 2px solid #F4F4F0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFE600;
+  border: 2px solid #000000;
+}
