@@ -1,0 +1,64 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// -------------------------------------------------------------
+// User Model (STUDENT or ADMIN only)
+// -------------------------------------------------------------
+model User {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  name         String
+  passwordHash String
+  role         String      @default("STUDENT") // STUDENT | ADMIN
+  studentId    String?
+  department   String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  foundItems   FoundItem[]
+  claims       Claim[]
+}
+
+// -------------------------------------------------------------
+// Found Items (Uploaded exclusively by Admin)
+// -------------------------------------------------------------
+model FoundItem {
+  id          String    @id @default(cuid())
+  title       String
+  category    String
+  location    String
+  imageUrl    String
+  status      String    @default("available") // available | pending | resolved
+  isFlagged   Boolean   @default(false)
+  finderId    String
+  finder      User      @relation(fields: [finderId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  claims      Claim[]
+}
+
+// -------------------------------------------------------------
+// Official Student Claims (3 Structured Verification Fields)
+// -------------------------------------------------------------
+model Claim {
+  id                 String    @id @default(cuid())
+  itemId             String
+  item               FoundItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  claimerId          String
+  claimer            User      @relation(fields: [claimerId], references: [id], onDelete: Cascade)
+  studentName        String
+  registrationNumber String
+  department         String
+  status             String    @default("pending") // pending | approved | rejected
+  adminOverridden    Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+}
