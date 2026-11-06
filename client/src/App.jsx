@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import StudentModule from './pages/StudentModule';
 import AdminModule from './pages/AdminModule';
+import { ThemeProvider } from './context/ThemeContext';
 
 function HomeRedirect() {
   const { isAuthenticated, role, loading } = useAuth();
@@ -28,37 +29,39 @@ function HomeRedirect() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          {/* Public Authentication Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+      <ThemeProvider>
+        <AuthProvider>
+          <Routes>
+            {/* Public Authentication Routes */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
 
-          {/* Student Module: Accessible by STUDENT and ADMIN */}
-          <Route
-            path="/student"
-            element={
-              <ProtectedRoute allowedRoles={['STUDENT', 'ADMIN']}>
-                <StudentModule />
-              </ProtectedRoute>
-            }
-          />
+            {/* Student Module: Accessible by STUDENT and ADMIN */}
+            <Route
+              path="/student"
+              element={
+                <ProtectedRoute allowedRoles={['STUDENT', 'ADMIN']}>
+                  <StudentModule />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Administrator Module: Accessible only by ADMIN */}
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute allowedRoles={['ADMIN']}>
-                <AdminModule />
-              </ProtectedRoute>
-            }
-          />
+            {/* Administrator Module: Accessible only by ADMIN */}
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute allowedRoles={['ADMIN']}>
+                  <AdminModule />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Root Redirect & Fallback */}
-          <Route path="/" element={<HomeRedirect />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </AuthProvider>
+            {/* Root Redirect & Fallback */}
+            <Route path="/" element={<HomeRedirect />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

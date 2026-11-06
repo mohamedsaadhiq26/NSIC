@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth, getRoleRedirectPath } from '../context/AuthContext';
 import { Lock, Mail, User, Building, ArrowRight, Loader2, GraduationCap, Briefcase, ShieldAlert, Sparkles } from 'lucide-react';
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function Signup() {
   const [formData, setFormData] = useState({
@@ -43,6 +44,7 @@ export default function Signup() {
       className="min-h-screen relative flex items-center justify-center p-4 selection:bg-[#FFE600] selection:text-black font-sans bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url('/auth-bg.jpg')` }}
     >
+      <ThemeToggle className="fixed right-4 top-4 z-20" />
       {/* Dark tint overlay for contrast and atmosphere */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px] pointer-events-none" />
 

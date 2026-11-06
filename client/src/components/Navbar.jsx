@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Plus, ShieldAlert, GraduationCap, LogOut, ChevronDown } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import ThemeToggle from './ThemeToggle';
 
 export default function Navbar({ onOpenUpload }) {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
@@ -75,6 +76,7 @@ export default function Navbar({ onOpenUpload }) {
 
           {/* Right Action Cluster */}
           <div className="flex items-center space-x-3">
+            <ThemeToggle />
             {/* Upload Button: STRICTLY ADMIN EXCLUSIVE */}
             {isAdmin && onOpenUpload && (
               <button

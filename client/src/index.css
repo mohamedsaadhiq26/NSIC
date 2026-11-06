@@ -7,11 +7,81 @@
     background-color: #F4F4F0;
     color: #000000;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    transition: background-color 150ms ease, color 150ms ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
   }
+}
+
+html.dark body {
+  background-color: #171717;
+  color: #F4F4F0;
+}
+
+html.dark .bg-white {
+  background-color: #222222 !important;
+}
+
+html.dark .bg-\[\#F4F4F0\] {
+  background-color: #292929 !important;
+}
+
+html.dark .bg-\[\#E5E5DF\] {
+  background-color: #353535 !important;
+}
+
+html.dark [class~="text-black"],
+html.dark [class*="text-black/"] {
+  color: #F4F4F0 !important;
+}
+
+html.dark [class~="bg-[#FFE600]"] [class~="text-black"],
+html.dark [class~="bg-[#FFE600]"][class~="text-black"],
+html.dark [class~="bg-[#FF5C00]"] [class~="text-black"],
+html.dark [class~="bg-[#FF5C00]"][class~="text-black"],
+html.dark [class~="bg-[#00F0FF]"] [class~="text-black"],
+html.dark [class~="bg-[#00F0FF]"][class~="text-black"],
+html.dark [class~="bg-[#FF48B0]"] [class~="text-black"],
+html.dark [class~="bg-[#FF48B0]"][class~="text-black"],
+html.dark [class~="bg-[#CCFF00]"] [class~="text-black"],
+html.dark [class~="bg-[#CCFF00]"][class~="text-black"],
+html.dark [class~="bg-[#00FF66]"] [class~="text-black"],
+html.dark [class~="bg-[#00FF66]"][class~="text-black"] {
+  color: #000000 !important;
+}
+
+html.dark .bg-white[class*="text-black"],
+html.dark .bg-white [class*="text-black"],
+html.dark [class~="bg-[#F4F4F0]"][class*="text-black"],
+html.dark [class~="bg-[#F4F4F0]"] [class*="text-black"],
+html.dark [class~="bg-[#E5E5DF]"][class*="text-black"],
+html.dark [class~="bg-[#E5E5DF]"] [class*="text-black"] {
+  color: #F4F4F0 !important;
+}
+
+html.dark .border-black {
+  border-color: #F4F4F0 !important;
+}
+
+html.dark input::placeholder {
+  color: rgb(244 244 240 / 45%);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #222222;
+  border-left-color: #F4F4F0;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #F4F4F0;
+  border-color: #222222;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #FFE600;
+  border-color: #000000;
 }
 
 /* Neo-Brutalist Hazard Stripes Backgrounds */
